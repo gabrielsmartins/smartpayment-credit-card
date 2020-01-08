@@ -1,0 +1,4 @@
+br\com\smartpayment\usecases\FindCreditCardUseCase.class
+br\com\smartpayment\gateway\FindCreditCardGateway.class
+br\com\smartpayment\domain\CreditCard.class
+br\com\smartpayment\domain\BrandEnum.class
