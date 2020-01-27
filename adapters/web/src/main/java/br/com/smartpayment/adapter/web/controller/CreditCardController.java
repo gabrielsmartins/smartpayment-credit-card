@@ -1,5 +1,6 @@
 package br.com.smartpayment.adapter.web.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +16,11 @@ import br.com.smartpayment.domain.CreditCard;
 
 @RestController
 @RequestMapping("cards")
+@AllArgsConstructor
 public class CreditCardController {
-	
-	@Autowired
-	private CreditCardService creditCardService;
-	
-	@Autowired
-	private CreditCardWebMapper mapper;
+
+	private final CreditCardService creditCardService;
+	private final CreditCardWebMapper mapper;
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> findById(@PathVariable("id") Long id){

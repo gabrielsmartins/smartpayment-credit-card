@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import br.com.smartpayment.adapter.web.mapper.CreditCardWebMapper;
 
 @Configuration
-public class CreditCardWebMapperConfigurer {
+public class WebMapperConfigurer {
 
 	@Bean
 	public CreditCardWebMapper creditCardWebMapper() {

@@ -8,7 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>application</artifactId>
-	<name>Application Project</name>
+	<name>application</name>
+	<description>Application</description>
+
 
 	<packaging>jar</packaging>
 
@@ -38,5 +40,19 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

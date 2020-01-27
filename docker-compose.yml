@@ -1,0 +1,77 @@
+version : '3.5'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app1
+      - app2
+      - app3
+    networks:
+      - production-network
+  creditcard-host-db:
+    container_name: mysql
+    image: mysql/mysql-server:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_DATABASE=smartpaymentcreditcarddb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=12345
+    ports:
+      - "12345:3306"
+    #restart: always
+    networks:
+      - production-network
+  app1:
+    build:
+      dockerfile: ./docker/smart-payment-credit-card.dockerfile
+      context: .
+    image: gabrielsmartins/smart-payment-credit-card
+    container_name: smart-payment-credit-card1
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/.m2:/root/.m2
+    networks:
+      - production-network
+    depends_on:
+      - "creditcard-host-db"
+  app2:
+    build:
+      dockerfile: ./docker/smart-payment-credit-card.dockerfile
+      context: .
+    image: gabrielsmartins/smart-payment-credit-card
+    container_name: smart-payment-credit-card2
+    ports:
+      - "8081:8080"
+    volumes:
+      - ~/.m2:/root/.m2
+    networks:
+      - production-network
+    depends_on:
+      - "creditcard-host-db"
+      - "app1"
+  app3:
+    build:
+      dockerfile: ./docker/smart-payment-credit-card.dockerfile
+      context: .
+    image: gabrielsmartins/smart-payment-credit-card
+    container_name: smart-payment-credit-card3
+    ports:
+      - "8082:8080"
+    volumes:
+      - ~/.m2:/root/.m2
+    networks:
+      - production-network
+    depends_on:
+      - "creditcard-host-db"
+      - "app2"
+networks:
+  production-network:
+    driver: bridge
