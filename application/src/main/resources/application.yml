@@ -23,8 +23,8 @@ spring:
       #client:
         #url: http://localhost:8081
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://creditcard-host-db:3306/smartpaymentcreditcarddb?useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysqlhost:3306/creditcarddb?useTimezone=true&serverTimezone=UTC&useSSL=false
     username: root
     password: 12345
   h2:

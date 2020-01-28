@@ -15,12 +15,12 @@ services:
       - app3
     networks:
       - production-network
-  creditcard-host-db:
+  mysqlhost:
     container_name: mysql
     image: mysql/mysql-server:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_DATABASE=smartpaymentcreditcarddb
+      - MYSQL_DATABASE=creditcarddb
       - MYSQL_USER=root
       - MYSQL_PASSWORD=12345
     ports:
@@ -41,7 +41,7 @@ services:
     networks:
       - production-network
     depends_on:
-      - "creditcard-host-db"
+      - "mysqlhost"
   app2:
     build:
       dockerfile: ./docker/smart-payment-credit-card.dockerfile
@@ -55,8 +55,7 @@ services:
     networks:
       - production-network
     depends_on:
-      - "creditcard-host-db"
-      - "app1"
+      - "mysqlhost"
   app3:
     build:
       dockerfile: ./docker/smart-payment-credit-card.dockerfile
@@ -70,8 +69,7 @@ services:
     networks:
       - production-network
     depends_on:
-      - "creditcard-host-db"
-      - "app2"
+      - "mysqlhost"
 networks:
   production-network:
     driver: bridge
