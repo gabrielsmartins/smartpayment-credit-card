@@ -24,13 +24,9 @@ spring:
         #url: http://localhost:8081
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/creditcarddb?useTimezone=true&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://mysqlhost:3306/creditcarddb?useTimezone=true&serverTimezone=UTC&useSSL=false
     username: root
-    password:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    password: 12345
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
