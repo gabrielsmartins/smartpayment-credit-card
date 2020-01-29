@@ -6,13 +6,15 @@ import br.com.smartpayment.domain.CreditCard;
 import br.com.smartpayment.usecases.FindCreditCardUseCase;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CreditCardService {
 	
 	private final FindCreditCardUseCase findCreditCardUseCase;
 	
-	public CreditCard findById(Long id) {
+	public Optional<CreditCard> findById(Long id) {
 		return findCreditCardUseCase.findById(id);
 	}
 

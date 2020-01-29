@@ -2,10 +2,12 @@ package br.com.smartpayment.gateway;
 
 import br.com.smartpayment.domain.CreditCard;
 
+import java.util.Optional;
+
 public interface FindCreditCardGateway {
 	
-	public CreditCard findById(Long id);
+	Optional<CreditCard> findById(Long id);
 	
-	public CreditCard findByNumber(String number);
+	Optional<CreditCard> findByNumber(String number);
 
 }

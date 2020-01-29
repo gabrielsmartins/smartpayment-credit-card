@@ -2,10 +2,12 @@ package br.com.smartpayment.usecases;
 
 import br.com.smartpayment.domain.CreditCard;
 
+import java.util.Optional;
+
 public interface FindCreditCardUseCase {
 
-	public CreditCard findByNumber(String number);
-	
-	public CreditCard findById(Long id);
+	Optional<CreditCard> findByNumber(String number);
+
+	Optional<CreditCard> findById(Long id);
 	
 }

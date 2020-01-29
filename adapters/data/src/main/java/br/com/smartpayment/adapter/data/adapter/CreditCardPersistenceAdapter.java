@@ -18,19 +18,19 @@ public class CreditCardPersistenceAdapter implements FindCreditCardGateway {
 	private final CreditCardDataMapper mapper;
 
 	@Override
-	public CreditCard findById(Long id) {
+	public Optional<CreditCard> findById(Long id) {
 		Optional<CreditCardEntity> optionalCreditCard = repository.findById(id);
-		if (optionalCreditCard.isEmpty())
-			return mapper.mapToDomain(optionalCreditCard.get());
-		return null;
+		if (!optionalCreditCard.isEmpty())
+			return Optional.ofNullable(mapper.mapToDomain(optionalCreditCard.get()));
+		return Optional.empty();
 	}
 
 	@Override
-	public CreditCard findByNumber(String number) {
+	public Optional<CreditCard> findByNumber(String number) {
 		Optional<CreditCardEntity> optionalCreditCard = repository.findByNumber(number);
-		if (optionalCreditCard.isEmpty())
-			return mapper.mapToDomain(optionalCreditCard.get());
-		return null;
+		if (!optionalCreditCard.isEmpty())
+			return Optional.ofNullable(mapper.mapToDomain(optionalCreditCard.get()));
+		return Optional.empty();
 	}
 
 }

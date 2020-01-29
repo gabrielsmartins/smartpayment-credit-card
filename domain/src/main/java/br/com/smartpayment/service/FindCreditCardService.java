@@ -4,6 +4,8 @@ import br.com.smartpayment.domain.CreditCard;
 import br.com.smartpayment.gateway.FindCreditCardGateway;
 import br.com.smartpayment.usecases.FindCreditCardUseCase;
 
+import java.util.Optional;
+
 public class FindCreditCardService implements FindCreditCardUseCase{
 
 	private FindCreditCardGateway gateway;
@@ -12,11 +14,11 @@ public class FindCreditCardService implements FindCreditCardUseCase{
 		this.gateway = gateway;
 	}
 	
-	public CreditCard findByNumber(String number) {
+	public Optional<CreditCard> findByNumber(String number) {
 		return this.gateway.findByNumber(number);
 	}
 	
-	public CreditCard findById(Long id) {
+	public Optional<CreditCard> findById(Long id) {
 		return this.gateway.findById(id);
 	}
 }

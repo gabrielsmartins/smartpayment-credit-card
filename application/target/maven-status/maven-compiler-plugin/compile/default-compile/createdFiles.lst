@@ -1,5 +1,5 @@
 br\com\smartpayment\config\WebMapperConfigurer.class
-br\com\smartpayment\SmartPaymenyCreditCardApplication.class
 br\com\smartpayment\config\DataMapperConfigurer.class
+br\com\smartpayment\SmartPaymenyCreditCardApplication.class
 br\com\smartpayment\config\UseCaseConfigurer.class
 br\com\smartpayment\config\PersistenceAdapterConfigurer.class
